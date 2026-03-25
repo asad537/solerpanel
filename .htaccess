@@ -1,21 +1,26 @@
 RewriteEngine On
 
-# 1. Redirect known old paths specifically to consolidate SEO
-RewriteRule ^Boxes-By-Industry/?$ https://hafizitsolutions.info/ [R=301,L,NC]
-RewriteRule ^boxes-by-industry/?$ https://hafizitsolutions.info/ [R=301,L,NC]
+# 1. Redirect known folders from the OLD site to the new homepage
+RewriteRule ^Boxes-By-Industry/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^boxes-by-industry/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^Boxes-By-Style/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^boxes-by-style/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^Cardboard-Boxes/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^cardboard-boxes/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^Retail-Boxes/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^retail-boxes/?.*$ https://hafizitsolutions.info/ [R=301,L,NC]
 
-# 2. Redirect unwanted template index variations to the main root homepage
+# 2. Redirect template extra files
 RewriteRule ^index-2\.html$ https://hafizitsolutions.info/ [R=301,L]
 RewriteRule ^index-two\.html$ https://hafizitsolutions.info/ [R=301,L]
 RewriteRule ^yourwebsitehere\.html$ https://hafizitsolutions.info/ [R=301,L]
 RewriteRule ^Blog-details-2\.html$ https://hafizitsolutions.info/ [R=301,L]
 
-# 3. Custom 404 page
-ErrorDocument 404 /error.html
+# 3. Catch-all: Redirect ANY path that is NOT an actual file or folder on the server
+# This will clean up any other hidden old URLs by sending them to the homepage.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . https://hafizitsolutions.info/ [R=301,L]
 
-# 4. Optional: Redirect ALL non-existing pages to the homepage
-# This is the most aggressive way to get Google to replace old links with your homepage.
-# Uncomment the 3 lines below if you want EVERYTHING that is missing to redirect to the home page.
-# RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule . https://hafizitsolutions.info/ [R=301,L]
+# 4. Custom 404 (Just in case)
+ErrorDocument 404 /error.html
