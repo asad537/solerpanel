@@ -1,4 +1,7 @@
 User-agent: *
-Allow: /
+Disallow: /index-2.html
+Disallow: /index-two.html
+Disallow: /Blog-details-2.html
+Disallow: /yourwebsitehere.html
 
 Sitemap: https://hafizitsolutions.info/sitemap.xml

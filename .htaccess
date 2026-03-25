@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Redirect unwanted index variations to the main root homepage
+RewriteRule ^index-2\.html$ https://hafizitsolutions.info/ [R=301,L]
+RewriteRule ^index-two\.html$ https://hafizitsolutions.info/ [R=301,L]
+RewriteRule ^yourwebsitehere\.html$ https://hafizitsolutions.info/ [R=301,L]
+RewriteRule ^Blog-details-2\.html$ https://hafizitsolutions.info/ [R=301,L]
+
+# Custom 404 page
+ErrorDocument 404 /error.html
+
+# If any specific 'old' company website URLs are known
+# List them here for redirection to the main root
+# RewriteRule ^company-page\.html$ https://hafizitsolutions.info/ [R=301,L]
