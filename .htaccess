@@ -1,14 +1,21 @@
 RewriteEngine On
 
-# Redirect unwanted index variations to the main root homepage
+# 1. Redirect known old paths specifically to consolidate SEO
+RewriteRule ^Boxes-By-Industry/?$ https://hafizitsolutions.info/ [R=301,L,NC]
+RewriteRule ^boxes-by-industry/?$ https://hafizitsolutions.info/ [R=301,L,NC]
+
+# 2. Redirect unwanted template index variations to the main root homepage
 RewriteRule ^index-2\.html$ https://hafizitsolutions.info/ [R=301,L]
 RewriteRule ^index-two\.html$ https://hafizitsolutions.info/ [R=301,L]
 RewriteRule ^yourwebsitehere\.html$ https://hafizitsolutions.info/ [R=301,L]
 RewriteRule ^Blog-details-2\.html$ https://hafizitsolutions.info/ [R=301,L]
 
-# Custom 404 page
+# 3. Custom 404 page
 ErrorDocument 404 /error.html
 
-# If any specific 'old' company website URLs are known
-# List them here for redirection to the main root
-# RewriteRule ^company-page\.html$ https://hafizitsolutions.info/ [R=301,L]
+# 4. Optional: Redirect ALL non-existing pages to the homepage
+# This is the most aggressive way to get Google to replace old links with your homepage.
+# Uncomment the 3 lines below if you want EVERYTHING that is missing to redirect to the home page.
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . https://hafizitsolutions.info/ [R=301,L]
